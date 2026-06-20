@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bcxyessmubak"]
 
+[ext_resource type="PackedScene" uid="uid://bh3nm7qxf3kr2" path="res://Scenes/player.tscn" id="1_jjgbg"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dipq"]
 size = Vector3(60, 1, 60)
 
@@ -23,3 +25,9 @@ light_energy = 0.5
 light_indirect_energy = 3.0
 light_volumetric_fog_energy = 3.0
 sky_mode = 1
+
+[node name="Player" parent="." unique_id=2083121562 instance=ExtResource("1_jjgbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17750585, 2.2783062, -0.29900253)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1023794934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
