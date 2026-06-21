@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bcxyessmubak"]
 
+[ext_resource type="Script" uid="uid://bgrwx4vejt2ed" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://bh3nm7qxf3kr2" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="Shader" uid="uid://d12mau0monnf5" path="res://assets/shaders/ps1_post_process.gdshader" id="2_bo1nx"]
 
@@ -13,6 +14,7 @@ size = Vector3(60, 1, 60)
 shader = ExtResource("2_bo1nx")
 
 [node name="Main" type="Node3D" unique_id=881907086]
+script = ExtResource("1_bo1nx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1597040037]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -30,8 +32,9 @@ light_indirect_energy = 3.0
 light_volumetric_fog_energy = 3.0
 sky_mode = 1
 
-[node name="Player" parent="." unique_id=2083121562 instance=ExtResource("1_jjgbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17750585, 2.2783062, -0.29900253)
+[node name="Player" parent="." unique_id=2083121562 node_paths=PackedStringArray("_camera", "_camera_pivot") instance=ExtResource("1_jjgbg")]
+_camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
+_camera_pivot = NodePath("CameraPivot")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1023794934]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
@@ -45,3 +48,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+[node name="CameraPivot" type="Node3D" parent="Player" unique_id=1029346982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player/CameraPivot" unique_id=471223356]
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot/SpringArm3D" unique_id=1189440270]
+transform = Transform3D(0.9953962, 0.02641867, -0.09213285, 0, 0.9612617, 0.27563736, 0.09584575, -0.27436838, 0.9568362, -0.3685314, 0.081183195, 4.827345)
