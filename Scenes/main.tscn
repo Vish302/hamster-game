@@ -1,47 +1,33 @@
 [gd_scene format=3 uid="uid://bcxyessmubak"]
 
-[ext_resource type="Script" uid="uid://bgrwx4vejt2ed" path="res://Scripts/main.gd" id="1_bo1nx"]
-[ext_resource type="PackedScene" uid="uid://bh3nm7qxf3kr2" path="res://Scenes/player.tscn" id="1_jjgbg"]
-[ext_resource type="Shader" uid="uid://d12mau0monnf5" path="res://assets/shaders/ps1_post_process.gdshader" id="2_bo1nx"]
+[node name="Level1" type="Node3D" unique_id=1669429564]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7dipq"]
-size = Vector3(60, 1, 60)
+[node name="floor" type="CSGBox3D" parent="." unique_id=1382992196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.4486, 0.5057297, -87.045715)
+use_collision = true
+size = Vector3(424.94293, 0.14160156, 444.51892)
 
-[sub_resource type="BoxMesh" id="BoxMesh_7dipq"]
-size = Vector3(60, 1, 60)
+[node name="ramp" type="CSGPolygon3D" parent="." unique_id=1439798931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5383253, 0.50290537, 4.147529)
+use_collision = true
+polygon = PackedVector2Array(-0.093815684, -0.04773581, 0, 1, 1, 1, 4.3549657, -0.01761806)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qyt7c"]
-shader = ExtResource("2_bo1nx")
+[node name="wall" type="CSGBox3D" parent="." unique_id=1511788129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3811493, 2.7119787, 0.3373413)
+size = Vector3(25.142303, 4.5341187, 0.32531738)
 
-[node name="Main" type="Node3D" unique_id=881907086]
-script = ExtResource("1_bo1nx")
+[node name="wall" type="CSGBox3D" parent="wall" unique_id=2021184717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3574324, 0.028825521, 6.2804465)
+size = Vector3(25.142303, 4.5341187, 0.32531738)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1597040037]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+[node name="sewage" type="CSGBox3D" parent="." unique_id=841210919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4811347, 0.5748713, 3.3918014)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(3.7626953, 0.3251953, 6.172119)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1943773201]
-shape = SubResource("BoxShape3D_7dipq")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1304586993]
-mesh = SubResource("BoxMesh_7dipq")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=264490525]
-transform = Transform3D(1, 0, 0, 0, -0.019295156, 0.9998137, 0, -0.9998138, -0.019295037, 0, 19, 0)
-light_energy = 0.5
-light_indirect_energy = 3.0
-light_volumetric_fog_energy = 3.0
-sky_mode = 1
-
-[node name="Player" parent="." unique_id=2083121562 node_paths=PackedStringArray("_camera", "_camera_pivot") instance=ExtResource("1_jjgbg")]
-_camera = NodePath("")
-_camera_pivot = NodePath("")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=736478075]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=588930805]
-material = SubResource("ShaderMaterial_qyt7c")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="platform" type="CSGBox3D" parent="." unique_id=886845584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.0488205, 0.87093997, 3.482987)
+use_collision = true
+size = Vector3(7.1749268, 0.71984863, 5.954773)
