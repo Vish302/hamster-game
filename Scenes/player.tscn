@@ -7,8 +7,10 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_7dipq"]
 radius = 0.425
 
-[node name="Player" type="CharacterBody3D" unique_id=2083121562]
+[node name="Player" type="CharacterBody3D" unique_id=2083121562 node_paths=PackedStringArray("_camera", "_camera_pivot")]
 script = ExtResource("1_v0iea")
+_camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
+_camera_pivot = NodePath("CameraPivot")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=855641793]
 
@@ -21,3 +23,13 @@ shape = SubResource("SphereShape3D_7dipq")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=882535924]
 stream = ExtResource("3_6t5aa")
+pitch_scale = 0.8
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1462949978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=735825244]
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=942986304]
+transform = Transform3D(0.9953962, 0.026418671, -0.09213285, 0, 0.9612617, 0.27563733, 0.09584575, -0.27436838, 0.9568362, -0.3685314, 0.081183195, 4.827345)
