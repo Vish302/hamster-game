@@ -38,12 +38,6 @@ transform = Transform3D(0.9953962, 0.026418671, -0.09213285, 0, 0.9612617, 0.275
 [node name="Player" parent="." unique_id=2083121562 node_paths=PackedStringArray("_camera") instance=ExtResource("1_jjgbg")]
 _camera = NodePath("../Camera3D")
 
-[node name="CameraPivot2" type="Node3D" parent="Player" unique_id=1029346982]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="SpringArm3D" type="SpringArm3D" parent="Player/CameraPivot2" unique_id=471223356]
-spring_length = 5.0
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=736478075]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=588930805]
