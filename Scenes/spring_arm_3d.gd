@@ -33,3 +33,5 @@ func _input(event: InputEvent) -> void:
 		
 		# 3. Clamp the vertical pitch so the camera doesn't flip upside down
 		rotation.x = clamp(rotation.x, min_pitch, max_pitch)
+		
+		$"../../Pivot".rotation.y = rotation.y

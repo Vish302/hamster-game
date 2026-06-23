@@ -20,7 +20,7 @@ var target_velocity = Vector3.ZERO
 @export_range(0.0, 1.0) var mouse_sensitivity = 0.01
 @export var tilt_limit = deg_to_rad(75)
 
-func _process(delta: float) -> void:
+func _process(delta: float) -> void:	
 	if Input.is_action_just_pressed("squeak"):
 		$AudioStreamPlayer.play()
 
@@ -28,6 +28,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	# create a local direction
 	var direction = Vector3.ZERO
+	var forward = $Pivot.transform.basis.z.normalized()
 	
 	# check for each input and change direction accordingly
 	if Input.is_action_pressed("move_left"):
@@ -43,12 +44,10 @@ func _physics_process(delta: float) -> void:
 	if direction != Vector3.ZERO:
 		# diagonal might be a little longer than single axis movement
 		direction = direction.normalized()
-		# basis affects rotation
-		$Pivot.basis = Basis.looking_at(direction)
 	
 	# ground velocity
-	target_velocity.x = move_toward(target_velocity.x, move_impulse * direction.x, move_acceleration * delta)
-	target_velocity.z = move_toward(target_velocity.z, move_impulse * direction.z, move_acceleration * delta)
+	# target_velocity.x = move_toward(target_velocity.x, move_impulse * direction.x, move_acceleration * delta)
+	target_velocity = move_toward(target_velocity, move_impulse * forward * direction.z, move_acceleration * delta)
 	
 	if direction.x == 0:
 		target_velocity.x = move_toward(velocity.x, 0, stop_acceleration * delta)

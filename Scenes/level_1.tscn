@@ -36,3 +36,6 @@ size = Vector3(7.1749268, 0.71984863, 5.954773)
 
 [node name="Player" parent="." unique_id=2083121562 instance=ExtResource("1_vk57k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1269574, 3.503675)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=928493860]
+transform = Transform3D(1, 0, 0, 0, 0.2588189, 0.9659259, 0, -0.9659259, 0.2588189, 0, 87, 0)
