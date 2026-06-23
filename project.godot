@@ -54,6 +54,10 @@ squeak={
 ]
 }
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/func_godot/plugin.cfg")
+
 [input]
 
 move_left={
