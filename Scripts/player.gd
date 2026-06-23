@@ -69,10 +69,10 @@ func _physics_process(delta: float) -> void:
 	velocity = target_velocity
 	move_and_slide()
 
-func _unhandled_input(event: InputEvent) -> void:
+#func _unhandled_input(event: InputEvent) -> void:
 	# Mouselook implemented using `screen_relative` for resolution-independent sensitivity.
-	if event is InputEventMouseMotion:
-		_camera_pivot.rotation.x -= event.screen_relative.y * mouse_sensitivity
+	#if event is InputEventMouseMotion:
+		#_camera_pivot.rotation.x -= event.screen_relative.y * mouse_sensitivity
 		# Prevent the camera from rotating too far up or down.
-		_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -tilt_limit, tilt_limit)
-		_camera_pivot.rotation.y += -event.screen_relative.x * mouse_sensitivity
+		#_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -tilt_limit, tilt_limit)
+		#_camera_pivot.rotation.y += -event.screen_relative.x * mouse_sensitivity
