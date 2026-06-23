@@ -20,6 +20,10 @@ var target_velocity = Vector3.ZERO
 @export_range(0.0, 1.0) var mouse_sensitivity = 0.01
 @export var tilt_limit = deg_to_rad(75)
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("squeak"):
+		$AudioStreamPlayer.play()
+
 # defining the actual movement based on input
 func _physics_process(delta: float) -> void:
 	# create a local direction

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dnner8be5y0gg" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://dom4hdwjplffm" path="res://assets/C_hamster.glb" id="2_cvnsp"]
+[ext_resource type="AudioStream" uid="uid://bgp431xou7oky" path="res://Music/PlayerSqueak.wav" id="3_6t5aa"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7dipq"]
 radius = 0.425
@@ -17,3 +18,6 @@ transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=327474290]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.428679, 0)
 shape = SubResource("SphereShape3D_7dipq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=882535924]
+stream = ExtResource("3_6t5aa")
