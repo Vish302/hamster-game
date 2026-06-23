@@ -20,7 +20,7 @@ var target_velocity = Vector3.ZERO
 @export_range(0.0, 1.0) var mouse_sensitivity = 0.01
 @export var tilt_limit = deg_to_rad(75)
 
-func _process(delta: float) -> void:
+func _process(delta: float) -> void:	
 	if Input.is_action_just_pressed("squeak"):
 		$AudioStreamPlayer.play()
 
@@ -71,8 +71,10 @@ func _physics_process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouselook implemented using `screen_relative` for resolution-independent sensitivity.
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and Input.is_action_pressed("move_camera"):
 		_camera_pivot.rotation.x -= event.screen_relative.y * mouse_sensitivity
 		# Prevent the camera from rotating too far up or down.
 		_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -tilt_limit, tilt_limit)
 		_camera_pivot.rotation.y += -event.screen_relative.x * mouse_sensitivity
+		
+		$Pivot.rotation.y = _camera_pivot.rotation.y
