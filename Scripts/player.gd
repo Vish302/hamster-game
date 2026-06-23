@@ -9,10 +9,16 @@ signal dead
 
 # jump impulse applied to the character
 @export var jump_impulse = 20
-@export var move_impulse = 18
+@export var move_impulse = 20
 @export var bounce_impulse = 16
 
 var target_velocity = Vector3.ZERO
+
+@export var _camera : Camera3D
+@export var _camera_pivot : Node3D
+
+@export_range(0.0, 1.0) var mouse_sensitivity = 0.01
+@export var tilt_limit = deg_to_rad(75)
 
 # defining the actual movement based on input
 func _physics_process(delta: float) -> void:
@@ -58,3 +64,11 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = target_velocity
 	move_and_slide()
+
+func _unhandled_input(event: InputEvent) -> void:
+	# Mouselook implemented using `screen_relative` for resolution-independent sensitivity.
+	if event is InputEventMouseMotion and Input.is_action_pressed("moving_camera"):
+		_camera_pivot.rotation.x -= event.screen_relative.y * mouse_sensitivity
+		# Prevent the camera from rotating too far up or down.
+		_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -tilt_limit, tilt_limit)
+		_camera_pivot.rotation.y += -event.screen_relative.x * mouse_sensitivity
