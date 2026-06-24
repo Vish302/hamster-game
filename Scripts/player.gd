@@ -45,16 +45,24 @@ func _physics_process(delta: float) -> void:
 		# diagonal might be a little longer than single axis movement
 		direction = direction.normalized()
 	
-	# ground velocity
-	# Using the Vector3 version of move_toward
-	var target_ground = move_impulse * forward * direction.z
-	target_velocity = target_velocity.move_toward(target_ground, move_acceleration * delta)
+	# This combines forward/backward and left/right inputs together
+	var move_dir = ($Pivot.transform.basis.z * direction.z) + ($Pivot.transform.basis.x * direction.x)
+	if move_dir != Vector3.ZERO:
+		move_dir = move_dir.normalized()
+
+	# Separate horizontal target from gravity
+	var target_ground = move_dir * move_impulse
+	var current_ground = Vector3(target_velocity.x, 0, target_velocity.z)
 	
-	# FIX: Changed velocity.x / velocity.z to target_velocity.x / target_velocity.z
-	if direction.x == 0:
-		target_velocity.x = move_toward(target_velocity.x, 0, stop_acceleration * delta)
-	if direction.z == 0:
-		target_velocity.z = move_toward(target_velocity.z, 0, stop_acceleration * delta)
+	# Determine if the player is actively pressing keys or stopping
+	var current_accel = move_acceleration if direction != Vector3.ZERO else stop_acceleration
+	
+	# Smoothly move toward the target velocity in 3D space
+	current_ground = current_ground.move_toward(target_ground, current_accel * delta)
+	
+	# Apply the calculated speeds back to the actual velocity tracker
+	target_velocity.x = current_ground.x
+	target_velocity.z = current_ground.z
 
 	# vertical velocity 
 	if not is_on_floor(): # basically emulating gravity here
