@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bk6lvo7thnjjw"]
+
+[ext_resource type="PackedScene" uid="uid://peybbfmua0x4" path="res://assets/meshes/environment modular set/modular_set_sewer.glb" id="1_fugwm"]
+
+[node name="modular_set_sewer" unique_id=4560875 instance=ExtResource("1_fugwm")]
