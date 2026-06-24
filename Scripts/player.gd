@@ -5,7 +5,7 @@ signal dead
 # defining how fast the player falls in mph
 @export var fall_acceleration = 75
 @export var move_acceleration = 15
-@export var stop_acceleration = 7
+@export var stop_acceleration = 4
 
 # jump impulse applied to the character
 @export var jump_impulse = 20
@@ -46,13 +46,15 @@ func _physics_process(delta: float) -> void:
 		direction = direction.normalized()
 	
 	# ground velocity
-	# target_velocity.x = move_toward(target_velocity.x, move_impulse * direction.x, move_acceleration * delta)
-	target_velocity = move_toward(target_velocity, move_impulse * forward * direction.z, move_acceleration * delta)
+	# Using the Vector3 version of move_toward
+	var target_ground = move_impulse * forward * direction.z
+	target_velocity = target_velocity.move_toward(target_ground, move_acceleration * delta)
 	
+	# FIX: Changed velocity.x / velocity.z to target_velocity.x / target_velocity.z
 	if direction.x == 0:
-		target_velocity.x = move_toward(velocity.x, 0, stop_acceleration * delta)
+		target_velocity.x = move_toward(target_velocity.x, 0, stop_acceleration * delta)
 	if direction.z == 0:
-		target_velocity.z = move_toward(velocity.z, 0, stop_acceleration * delta)
+		target_velocity.z = move_toward(target_velocity.z, 0, stop_acceleration * delta)
 
 	# vertical velocity 
 	if not is_on_floor(): # basically emulating gravity here
