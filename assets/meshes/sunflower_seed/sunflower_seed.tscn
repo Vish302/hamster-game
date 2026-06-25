@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c1hmq1v4as22i"]
+
+[ext_resource type="PackedScene" uid="uid://byovcgtqbmgrh" path="res://assets/meshes/sunflower_seed/sunflower_seed.glb" id="1_lco4r"]
+
+[node name="sunflower_seed" unique_id=496895769 instance=ExtResource("1_lco4r")]
