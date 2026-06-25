@@ -1,7 +1,5 @@
 extends CharacterBody3D
 
-signal dead
-
 # defining how fast the player falls in mph
 @export var fall_acceleration = 75
 @export var move_acceleration = 15
@@ -13,22 +11,22 @@ signal dead
 @export var bounce_impulse = 16
 
 var target_velocity = Vector3.ZERO
-
-@export var _camera : Camera3D
-@export var _camera_pivot : Node3D
+var moving = false
 
 @export_range(0.0, 1.0) var mouse_sensitivity = 0.01
 @export var tilt_limit = deg_to_rad(75)
 
-func _process(delta: float) -> void:	
+func _process(_delta: float) -> void:	
 	if Input.is_action_just_pressed("squeak"):
 		$AudioStreamPlayer.play()
+	var roll = randi_range(1, 1000)
+	if roll == 1:
+		$Pivot/C_hamster/AnimationPlayer.play("idle_looped")
 
 # defining the actual movement based on input
 func _physics_process(delta: float) -> void:
 	# create a local direction
 	var direction = Vector3.ZERO
-	var forward = $Pivot.transform.basis.z.normalized()
 	
 	# check for each input and change direction accordingly
 	if Input.is_action_pressed("move_left"):
@@ -49,7 +47,20 @@ func _physics_process(delta: float) -> void:
 	var move_dir = ($Pivot.transform.basis.z * direction.z) + ($Pivot.transform.basis.x * direction.x)
 	if move_dir != Vector3.ZERO:
 		move_dir = move_dir.normalized()
-
+		if $Pivot/C_hamster/AnimationPlayer.current_animation == "idle_looped":
+			$Pivot/C_hamster/AnimationPlayer.stop()
+	
+	if velocity.length() > 2:
+		if !moving and !$Pivot/C_hamster/AnimationPlayer.is_playing():
+			$Pivot/C_hamster/AnimationPlayer.play("Walk_Cycle_start")
+			moving = true
+		elif !$Pivot/C_hamster/AnimationPlayer.is_playing():
+			$Pivot/C_hamster/AnimationPlayer.play("Walk_Cycle_looped")
+	else:
+		if moving:
+			$Pivot/C_hamster/AnimationPlayer.play("Walk_Cycle_end")
+			moving = false
+	
 	# Separate horizontal target from gravity
 	var target_ground = move_dir * move_impulse
 	var current_ground = Vector3(target_velocity.x, 0, target_velocity.z)
@@ -77,11 +88,3 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = target_velocity
 	move_and_slide()
-
-#func _unhandled_input(event: InputEvent) -> void:
-	# Mouselook implemented using `screen_relative` for resolution-independent sensitivity.
-	#if event is InputEventMouseMotion:
-		#_camera_pivot.rotation.x -= event.screen_relative.y * mouse_sensitivity
-		# Prevent the camera from rotating too far up or down.
-		#_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -tilt_limit, tilt_limit)
-		#_camera_pivot.rotation.y += -event.screen_relative.x * mouse_sensitivity
