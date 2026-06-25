@@ -12,6 +12,7 @@ extends CharacterBody3D
 
 var target_velocity = Vector3.ZERO
 var moving = false
+var wait_for_sound = 0
 
 @export_range(0.0, 1.0) var mouse_sensitivity = 0.01
 @export var tilt_limit = deg_to_rad(75)
@@ -52,7 +53,11 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity.length() > 0.5:
 		if velocity.length() > 1 and is_on_floor():
-			$tippytaps.play()
+			if(wait_for_sound == 10):
+				$tippytaps.play()
+				wait_for_sound = 0
+			else:
+				wait_for_sound += 1
 		if !moving and !$Pivot/C_hamster/AnimationPlayer.is_playing():
 			$Pivot/C_hamster/AnimationPlayer.play("Walk_Cycle_start")
 			moving = true

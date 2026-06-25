@@ -17,7 +17,7 @@ script = ExtResource("1_v0iea")
 [node name="C_hamster" parent="Pivot" unique_id=1611388634 instance=ExtResource("2_cvnsp")]
 transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Pivot/C_hamster/Hamster_Amature" parent_id_path=PackedInt32Array(1611388634, 1038582437) index="0" unique_id=1889006708]
+[node name="Skeleton3D" parent="Pivot/C_hamster/Hamster_Amature" parent_id_path=PackedInt32Array(1611388634, 433810354) index="0" unique_id=1870570867]
 bones/0/position = Vector3(-0.006526648, 0.06598691, -0.13204974)
 bones/0/rotation = Quaternion(0.64460087, -0.051699936, -0.04697431, 0.76132137)
 bones/1/rotation = Quaternion(0.62364566, 0.3793494, -0.07861269, 0.6789553)
@@ -46,6 +46,7 @@ pitch_scale = 0.8
 [node name="tippytaps" type="AudioStreamPlayer" parent="." unique_id=1794481797]
 stream = ExtResource("4_fkybt")
 volume_db = 10.0
+pitch_scale = 2.0
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1462949978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
