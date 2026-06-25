@@ -8,15 +8,31 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_7dipq"]
 radius = 0.425
 
-[node name="Player" type="CharacterBody3D" unique_id=2083121562 node_paths=PackedStringArray("_camera", "_camera_pivot")]
+[node name="Player" type="CharacterBody3D" unique_id=2083121562]
 script = ExtResource("1_v0iea")
-_camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
-_camera_pivot = NodePath("CameraPivot")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=855641793]
 
 [node name="C_hamster" parent="Pivot" unique_id=1611388634 instance=ExtResource("2_cvnsp")]
 transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Pivot/C_hamster/Hamster_Amature" parent_id_path=PackedInt32Array(1611388634, 1038582437) index="0" unique_id=1889006708]
+bones/0/position = Vector3(-0.006526648, 0.06598691, -0.13204974)
+bones/0/rotation = Quaternion(0.64460087, -0.051699936, -0.04697431, 0.76132137)
+bones/1/rotation = Quaternion(0.62364566, 0.3793494, -0.07861269, 0.6789553)
+bones/2/rotation = Quaternion(-0.5545691, 0.0033497065, -0.1838355, 0.81157035)
+bones/3/rotation = Quaternion(0.0053224154, -0.008419045, 0.021072222, 0.99972844)
+bones/4/rotation = Quaternion(-0.017618014, 0.051311538, 0.01080629, 0.9984689)
+bones/5/rotation = Quaternion(0.77965856, 0.07749083, -0.14711781, 0.60372525)
+bones/6/rotation = Quaternion(-0.6967879, -0.2942591, 0.06845021, 0.65054816)
+bones/7/rotation = Quaternion(-0.16865958, 0.008910869, -0.033203013, 0.9850747)
+bones/8/rotation = Quaternion(0.10696437, 0.013462398, -0.0148813585, 0.9940604)
+bones/9/rotation = Quaternion(0.49008715, -0.09183845, 0.052618895, 0.8652234)
+bones/10/rotation = Quaternion(-0.60473984, 0.08373547, -0.16145241, 0.77537817)
+bones/11/rotation = Quaternion(0.8620388, -0.2260952, 0.27303812, 0.3622434)
+bones/12/rotation = Quaternion(-0.74805856, -0.06805231, -0.13206717, 0.6467887)
+bones/13/position = Vector3(-0.02275471, 0.16178243, -0.18626043)
+bones/13/rotation = Quaternion(0.28454313, -0.18854913, 0.6499925, 0.6789655)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=327474290]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.428679, 0)
@@ -35,3 +51,5 @@ script = ExtResource("4_vgqql")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=942986304]
 transform = Transform3D(0.9953962, 0.026418671, -0.09213285, 0, 0.9612617, 0.27563733, 0.09584575, -0.27436838, 0.9568362, -0.3685314, 0.081183195, 4.827345)
+
+[editable path="Pivot/C_hamster"]
