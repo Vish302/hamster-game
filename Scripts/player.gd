@@ -14,6 +14,7 @@ signal hit
 var target_velocity = Vector3.ZERO
 var moving = false
 var wait_for_sound = 0
+var alive = true
 
 @export_range(0.0, 1.0) var mouse_sensitivity = 0.01
 @export var tilt_limit = deg_to_rad(75)
@@ -31,14 +32,15 @@ func _physics_process(delta: float) -> void:
 	var direction = Vector3.ZERO
 	
 	# check for each input and change direction accordingly
-	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("move_right"):
-		direction.x += 1
-	if Input.is_action_pressed("move_forward"):
-		direction.z -= 1
-	if Input.is_action_pressed("move_back"):
-		direction.z += 1
+	if alive:
+		if Input.is_action_pressed("move_left"):
+			direction.x -= 1
+		if Input.is_action_pressed("move_right"):
+			direction.x += 1
+		if Input.is_action_pressed("move_forward"):
+			direction.z -= 1
+		if Input.is_action_pressed("move_back"):
+			direction.z += 1
 	
 	# if the player inputted something we will change the rotation to it
 	if direction != Vector3.ZERO:
@@ -105,4 +107,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	
 func die():
 	hit.emit()
-	queue_free()
+	target_velocity = Vector3.ZERO
+	moving = false
+	alive = false
