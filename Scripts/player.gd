@@ -19,8 +19,8 @@ var moving = false
 func _process(_delta: float) -> void:	
 	if Input.is_action_just_pressed("squeak"):
 		$AudioStreamPlayer.play()
-	var roll = randi_range(1, 1000)
-	if roll == 1:
+	var roll = randi_range(1, 500)
+	if roll == 1 and velocity.length() == 0.0:
 		$Pivot/C_hamster/AnimationPlayer.play("idle_looped")
 
 # defining the actual movement based on input
@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 		if $Pivot/C_hamster/AnimationPlayer.current_animation == "idle_looped":
 			$Pivot/C_hamster/AnimationPlayer.stop()
 	
-	if velocity.length() > 2:
+	if velocity.length() > 0.5:
 		if !moving and !$Pivot/C_hamster/AnimationPlayer.is_playing():
 			$Pivot/C_hamster/AnimationPlayer.play("Walk_Cycle_start")
 			moving = true
