@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dnner8be5y0gg" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://dom4hdwjplffm" path="res://assets/C_hamster.glb" id="2_cvnsp"]
 [ext_resource type="AudioStream" uid="uid://bgp431xou7oky" path="res://Music/PlayerSqueak.wav" id="3_6t5aa"]
+[ext_resource type="AudioStream" uid="uid://ciykf0ojqkdsc" path="res://Music/TippyTap.wav" id="4_fkybt"]
 [ext_resource type="Script" uid="uid://cglwoqy8f3dnv" path="res://Scenes/spring_arm_3d.gd" id="4_vgqql"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7dipq"]
@@ -38,9 +39,13 @@ bones/13/rotation = Quaternion(0.28454313, -0.18854913, 0.6499925, 0.6789655)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.428679, 0)
 shape = SubResource("SphereShape3D_7dipq")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=882535924]
+[node name="Squeak" type="AudioStreamPlayer" parent="." unique_id=882535924]
 stream = ExtResource("3_6t5aa")
 pitch_scale = 0.8
+
+[node name="tippytaps" type="AudioStreamPlayer" parent="." unique_id=1794481797]
+stream = ExtResource("4_fkybt")
+volume_db = 10.0
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1462949978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -50,6 +55,6 @@ spring_length = 3.0
 script = ExtResource("4_vgqql")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=942986304]
-transform = Transform3D(0.9953962, 0.026418671, -0.09213285, 0, 0.9612617, 0.27563733, 0.09584575, -0.27436838, 0.9568362, -0.3685314, 0.081183195, 4.827345)
+transform = Transform3D(0.9953962, 0.026418671, -0.09213285, 0, 0.9612617, 0.27563733, 0.09584575, -0.27436838, 0.9568362, 0, 0, 0)
 
 [editable path="Pivot/C_hamster"]

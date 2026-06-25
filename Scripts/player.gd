@@ -2,8 +2,8 @@ extends CharacterBody3D
 
 # defining how fast the player falls in mph
 @export var fall_acceleration = 75
-@export var move_acceleration = 15
-@export var stop_acceleration = 4
+@export var move_acceleration = 10
+@export var stop_acceleration = 6
 
 # jump impulse applied to the character
 @export var jump_impulse = 20
@@ -18,7 +18,7 @@ var moving = false
 
 func _process(_delta: float) -> void:	
 	if Input.is_action_just_pressed("squeak"):
-		$AudioStreamPlayer.play()
+		$Squeak.play()
 	var roll = randi_range(1, 500)
 	if roll == 1 and velocity.length() == 0.0:
 		$Pivot/C_hamster/AnimationPlayer.play("idle_looped")
@@ -51,6 +51,8 @@ func _physics_process(delta: float) -> void:
 			$Pivot/C_hamster/AnimationPlayer.stop()
 	
 	if velocity.length() > 0.5:
+		if velocity.length() > 1 and is_on_floor():
+			$tippytaps.play()
 		if !moving and !$Pivot/C_hamster/AnimationPlayer.is_playing():
 			$Pivot/C_hamster/AnimationPlayer.play("Walk_Cycle_start")
 			moving = true
