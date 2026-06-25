@@ -54,6 +54,7 @@ func _physics_process(delta: float) -> void:
 	if velocity.length() > 0.5:
 		if velocity.length() > 1 and is_on_floor():
 			if(wait_for_sound == 10):
+				$tippytaps.pitch_scale = randi_range(100, 150)*0.01
 				$tippytaps.play()
 				wait_for_sound = 0
 			else:

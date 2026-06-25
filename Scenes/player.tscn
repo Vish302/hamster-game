@@ -45,7 +45,7 @@ pitch_scale = 0.8
 
 [node name="tippytaps" type="AudioStreamPlayer" parent="." unique_id=1794481797]
 stream = ExtResource("4_fkybt")
-volume_db = 10.0
+volume_db = 15.0
 pitch_scale = 2.0
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1462949978]
