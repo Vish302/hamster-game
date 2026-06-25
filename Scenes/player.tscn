@@ -9,6 +9,9 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_7dipq"]
 radius = 0.425
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_fkybt"]
+radius = 0.5039939
+
 [node name="Player" type="CharacterBody3D" unique_id=2083121562]
 script = ExtResource("1_v0iea")
 
@@ -57,5 +60,16 @@ script = ExtResource("4_vgqql")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=942986304]
 transform = Transform3D(0.9953962, 0.026418671, -0.09213285, 0, 0.9612617, 0.27563733, 0.09584575, -0.27436838, 0.9568362, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1633754392]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=547947213]
+transform = Transform3D(0.9998976, 0, -0.014309988, 0, 1, 0, 0.014309988, 0, 0.9998976, -0.019165039, 0.45919037, 0)
+shape = SubResource("SphereShape3D_fkybt")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 
 [editable path="Pivot/C_hamster"]

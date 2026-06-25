@@ -1,4 +1,5 @@
 extends CharacterBody3D
+signal hit
 
 # defining how fast the player falls in mph
 @export var fall_acceleration = 75
@@ -96,3 +97,12 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = target_velocity
 	move_and_slide()
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	die()
+	
+	
+func die():
+	hit.emit()
+	queue_free()
