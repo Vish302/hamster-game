@@ -101,8 +101,6 @@ func _physics_process(delta: float) -> void:
 	velocity = target_velocity
 	move_and_slide()
 
-	
-	
 func die():
 	hit.emit()
 	target_velocity = Vector3.ZERO	
@@ -112,20 +110,13 @@ func die():
 	$"../MusicIntro".stop()
 	$"../LoseJingle".play()
 	$Pivot/C_hamster/AnimationPlayer2.play("death")
-	await get_tree().create_timer(1.0).timeout		
+	await get_tree().create_timer(1.0).timeout
 	$"Pivot".hide()
 	$HamsterDeath.rotation.y = $Pivot.rotation.y + PI
 	$"HamsterDeath".show()
 
-
-	
-
-	
-
-
 func _on_music_intro_finished() -> void:
 	$"../MusicLoop".play()
-
 
 func _on_water_detector_body_entered(body: Node3D) -> void:
 	die()
