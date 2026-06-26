@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c6s78evqc62da"]
+
+[ext_resource type="PackedScene" uid="uid://bcxyessmubak" path="res://Scenes/main.tscn" id="1_wao2c"]
+
+[node name="Win" type="Node3D" unique_id=1804073906]
+
+[node name="Main" parent="." unique_id=881907086 instance=ExtResource("1_wao2c")]
+
+[editable path="Main"]
