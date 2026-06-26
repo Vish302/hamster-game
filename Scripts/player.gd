@@ -92,7 +92,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		target_velocity.y = 0
 	
-	if is_on_floor() and Input.is_action_pressed("jump"):
+	if is_on_floor() and Input.is_action_pressed("jump") and alive:
 		target_velocity.y = jump_impulse
 	
 	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
@@ -107,6 +107,12 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	
 func die():
 	hit.emit()
-	target_velocity = Vector3.ZERO
+	target_velocity = Vector3.ZERO	
 	moving = false
 	alive = false
+	await get_tree().create_timer(1.0).timeout
+	moving = true
+	alive = true
+	target_velocity.y = jump_impulse
+	alive = false
+	moving = false
