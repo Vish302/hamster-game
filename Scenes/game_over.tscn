@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://b6dy18omsoc76"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_wrinw"]
+font_size = 30
+
 [node name="GameOver" type="CanvasLayer" unique_id=2110391926]
 
 [node name="Screen" type="ColorRect" parent="." unique_id=1165061988]
@@ -23,4 +26,5 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "You died! Press r to restart"
+text = "You died! Press R to restart"
+label_settings = SubResource("LabelSettings_wrinw")

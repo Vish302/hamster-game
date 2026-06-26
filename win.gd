@@ -8,6 +8,9 @@ func _ready() -> void:
 	var sky_mat = env.sky.sky_material as ProceduralSkyMaterial
 	sky_mat.sky_top_color = Color(0.1, 0.3, 0.9)
 	sky_mat.sky_horizon_color = Color(0.6, 0.8, 1.0)
+	
+	Global.alive = false
+	Global.win = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
