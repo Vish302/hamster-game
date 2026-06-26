@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://cs1wlnes5xjij"]
 
+[ext_resource type="Script" uid="uid://b3jqhgmhs30r5" path="res://Scenes/level_1.gd" id="1_chwpn"]
 [ext_resource type="PackedScene" uid="uid://bh3nm7qxf3kr2" path="res://Scenes/player.tscn" id="1_vk57k"]
 [ext_resource type="MeshLibrary" uid="uid://ceeg5saio0pcw" path="res://assets/meshes/environment modular set/modular_set_sewer.meshlib" id="2_8ffim"]
 [ext_resource type="MeshLibrary" uid="uid://cieb10gwb6sjc" path="res://assets/meshes/environment sewer objects/environment_sewer_objects.meshlib" id="4_7p6j4"]
@@ -51,6 +52,7 @@ shadow_mesh = SubResource("ArrayMesh_wagcr")
 data = PackedVector3Array(0.4, -0.3, -1.3038516e-07, 0.4, 0.3, 0.03999987, 0.4, 0.3, -1.3038516e-07, 0.4, -0.3, -1.3038516e-07, 0.4, -0.3, 0.03999987, 0.4, 0.3, 0.03999987, 0.4, -0.3, 0.03999987, -0.4, 0.3, 0.04000013, 0.4, 0.3, 0.03999987, 0.4, -0.3, 0.03999987, -0.4, -0.3, 0.04000013, -0.4, 0.3, 0.04000013, -0.4, -0.3, 0.04000013, -0.4, 0.3, 1.3038516e-07, -0.4, 0.3, 0.04000013, -0.4, -0.3, 0.04000013, -0.4, -0.3, 1.3038516e-07, -0.4, 0.3, 1.3038516e-07, -0.4, -0.3, 1.3038516e-07, 0.4, 0.3, -1.3038516e-07, -0.4, 0.3, 1.3038516e-07, -0.4, -0.3, 1.3038516e-07, 0.4, -0.3, -1.3038516e-07, 0.4, 0.3, -1.3038516e-07, 0.4, -0.3, 0.03999987, -0.4, -0.3, 1.3038516e-07, -0.4, -0.3, 0.04000013, 0.4, -0.3, 0.03999987, 0.4, -0.3, -1.3038516e-07, -0.4, -0.3, 1.3038516e-07, -0.4, 0.3, 0.04000013, 0.4, 0.3, -1.3038516e-07, 0.4, 0.3, 0.03999987, -0.4, 0.3, 0.04000013, -0.4, 0.3, 1.3038516e-07, 0.4, 0.3, -1.3038516e-07)
 
 [node name="Level1" type="Node3D" unique_id=1669429564]
+script = ExtResource("1_chwpn")
 
 [node name="Player" parent="." unique_id=2083121562 instance=ExtResource("1_vk57k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1269574, 3.503675)
@@ -91,6 +93,16 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(11, -5, 0)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1358766634]
+
+[node name="Death" type="ColorRect" parent="CanvasLayer" unique_id=776120511]
+material = SubResource("ShaderMaterial_7p6j4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="environment assets" type="GridMap" parent="." unique_id=1621726685]
 mesh_library = ExtResource("4_7p6j4")
 cell_size = Vector3(0.5, 0.5, 0.5)
@@ -129,4 +141,8 @@ volume_db = -20.0
 stream = ExtResource("6_evi0p")
 volume_db = -20.0
 
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="finished" from="MusicIntro" to="Player" method="_on_music_intro_finished"]
+
+[editable path="Player"]
+[editable path="Player/Pivot/C_hamster"]
