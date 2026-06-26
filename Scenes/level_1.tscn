@@ -5,53 +5,10 @@
 [ext_resource type="MeshLibrary" uid="uid://ceeg5saio0pcw" path="res://assets/meshes/environment modular set/modular_set_sewer.meshlib" id="2_8ffim"]
 [ext_resource type="MeshLibrary" uid="uid://cieb10gwb6sjc" path="res://assets/meshes/environment sewer objects/environment_sewer_objects.meshlib" id="4_7p6j4"]
 [ext_resource type="AudioStream" uid="uid://8cxq8u6bi1u" path="res://Music/Sewers-Intro.wav" id="4_6444e"]
-[ext_resource type="Texture2D" uid="uid://dvqmve723yak1" path="res://assets/meshes/environment sewer objects/environment_sewer_objects_sign_text_Base_color.png" id="5_6444e"]
 [ext_resource type="AudioStream" uid="uid://b255vk2usbhn2" path="res://Music/Sewers-Loop.wav" id="5_evi0p"]
 [ext_resource type="AudioStream" uid="uid://bilqpnq437gpt" path="res://Music/LoseJingle.wav" id="6_evi0p"]
 [ext_resource type="PackedScene" uid="uid://b6dy18omsoc76" path="res://Scenes/game_over.tscn" id="9_wrinw"]
 [ext_resource type="Texture2D" uid="uid://d0fo8j1vu5wmt" path="res://assets/meshes/environment sewer objects/environment_sewer_objects_T_rusty_metal_2_BC.png" id="10_chwpn"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvres"]
-resource_name = "signs_and_seed"
-cull_mode = 2
-albedo_texture = ExtResource("5_6444e")
-roughness = 0.5
-metadata/_gltf_primary_texture_coord = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_wagcr"]
-_surfaces = [{
-"aabb": AABB(-0.4, -0.3, -1.3038516e-07, 0.8, 0.6, 0.04000026),
-"format": 34896613377,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
-"name": "signs_and_seed",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("//8AAAAAAAD//////v8AAP////8AAAAA//8AAP7/AAAAAP////8AAAAAAAAAAAAAAAD//wAAAAAAAAAA//8AAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_evi0p"]
-resource_name = "environment_sewer_objects_SM_sign_02"
-_surfaces = [{
-"aabb": AABB(-0.4, -0.3, -1.3038516e-07, 0.8, 0.6, 0.04000026),
-"attribute_data": PackedByteArray("/FMJhPtX/7/8U/+/+1cJhPxT9P8KBP7D/FP+wwoE9P8KAAmECgT/vwoA/78KBAmECgQJhPxT/78KBP+//FMJhPxTCoAKBAmECgQKgPxTCYQKBP7D/FP/v/xT/sMKBP+/"),
-"format": 34896613399,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_wvres"),
-"name": "signs_and_seed",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("//8AAAAA/////////v////////8AAP////8AAP7//////wAA/v8AgAAA/////wCA//////7/AIAAAAAA//8AgAAAAAD/////AAD//wAA//8AAP///////wAAAAAAAP//AAAAAAAA////////AAD//wAA//8AAP////8AAAAA/////wAA/v//vwAAAAAAAP+/AAAAAP///7///wAAAAD/vwAA//////+//////wAA/7///////v//vwAA//8AAP+//7//f/+//3//v/9//7//f/9/////f////3////9/////P/9//z//f/8//3//P/9//v//f/7//3/+//9/////fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_wagcr")
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lsmp6"]
-data = PackedVector3Array(0.4, -0.3, -1.3038516e-07, 0.4, 0.3, 0.03999987, 0.4, 0.3, -1.3038516e-07, 0.4, -0.3, -1.3038516e-07, 0.4, -0.3, 0.03999987, 0.4, 0.3, 0.03999987, 0.4, -0.3, 0.03999987, -0.4, 0.3, 0.04000013, 0.4, 0.3, 0.03999987, 0.4, -0.3, 0.03999987, -0.4, -0.3, 0.04000013, -0.4, 0.3, 0.04000013, -0.4, -0.3, 0.04000013, -0.4, 0.3, 1.3038516e-07, -0.4, 0.3, 0.04000013, -0.4, -0.3, 0.04000013, -0.4, -0.3, 1.3038516e-07, -0.4, 0.3, 1.3038516e-07, -0.4, -0.3, 1.3038516e-07, 0.4, 0.3, -1.3038516e-07, -0.4, 0.3, 1.3038516e-07, -0.4, -0.3, 1.3038516e-07, 0.4, -0.3, -1.3038516e-07, 0.4, 0.3, -1.3038516e-07, 0.4, -0.3, 0.03999987, -0.4, -0.3, 1.3038516e-07, -0.4, -0.3, 0.04000013, 0.4, -0.3, 0.03999987, 0.4, -0.3, -1.3038516e-07, -0.4, -0.3, 1.3038516e-07, -0.4, 0.3, 0.04000013, 0.4, 0.3, -1.3038516e-07, 0.4, 0.3, 0.03999987, -0.4, 0.3, 0.04000013, -0.4, 0.3, 1.3038516e-07, 0.4, 0.3, -1.3038516e-07)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ko43n"]
 resource_name = "rusty metal 2"
@@ -133,7 +90,7 @@ data = PackedVector3Array(-0.36853758, -0.017249601, 0.056514133, -0.38174114, -
 script = ExtResource("1_chwpn")
 
 [node name="Player" parent="." unique_id=2083121562 instance=ExtResource("1_vk57k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5058036, 3.503675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49978042, 0.5058036, 3.503675)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=928493860]
 transform = Transform3D(1, 0, 0, 0, 0.2588189, 0.9659259, 0, -0.9659259, 0.2588189, 0, 87, 0)
@@ -182,15 +139,6 @@ data = {
 "cells": PackedInt32Array(131070, 65528, 1310723, 262184, 65522, 1179651)
 }
 metadata/_editor_floor_ = Vector3(0, 0, -26)
-
-[node name="SM_sign_02" type="MeshInstance3D" parent="." unique_id=1011380796]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.4283555, 3.2652957, -2.6360984)
-mesh = SubResource("ArrayMesh_evi0p")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="SM_sign_02" unique_id=456066573]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_sign_02/StaticBody3D" unique_id=2041546338]
-shape = SubResource("ConcavePolygonShape3D_lsmp6")
 
 [node name="Pipes" type="GridMap" parent="." unique_id=690853612]
 mesh_library = ExtResource("2_8ffim")
@@ -332,6 +280,21 @@ mesh = SubResource("ArrayMesh_af3po")
 shape = SubResource("ConcavePolygonShape3D_uy8f0")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/SM_light_source15" unique_id=1277454605]
+transform = Transform3D(-4.371139e-08, 0, -1, 1.642028e-15, 1, 0, 1, -8.351872e-23, -4.371139e-08, -0.008607864, 0.00703001, -0.0042881966)
+light_color = Color(1, 0.9137255, 0.77254903, 1)
+light_energy = 4.109
+omni_range = 6.5802107
+
+[node name="SM_light_source16" type="MeshInstance3D" parent="Lights" unique_id=361139320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.005, -1.31, -25.492)
+mesh = SubResource("ArrayMesh_af3po")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Lights/SM_light_source16" unique_id=1059457453]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lights/SM_light_source16/StaticBody3D" unique_id=1181454981]
+shape = SubResource("ConcavePolygonShape3D_uy8f0")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights/SM_light_source16" unique_id=208814137]
 transform = Transform3D(-4.371139e-08, 0, -1, 1.642028e-15, 1, 0, 1, -8.351872e-23, -4.371139e-08, -0.008607864, 0.00703001, -0.0042881966)
 light_color = Color(1, 0.9137255, 0.77254903, 1)
 light_energy = 4.109
