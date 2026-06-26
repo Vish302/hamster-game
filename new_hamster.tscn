@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://do5m5l8gifk14"]
+
+[ext_resource type="PackedScene" uid="uid://d4ak6sslnttx4" path="res://assets/death/C_hamster.glb" id="1_qcrsx"]
+
+[node name="C_hamster" unique_id=1641225081 instance=ExtResource("1_qcrsx")]
+
+[node name="Skeleton3D" parent="Hamster_Amature" parent_id_path=PackedInt32Array(58771889) index="0" unique_id=1695081657]
+bones/0/position = Vector3(-0.0018246775, 0.066161014, -0.13198784)
+bones/0/rotation = Quaternion(0.535522, 0.06230256, 0.0026513787, 0.8422159)
+bones/1/rotation = Quaternion(0.8329122, 0.26839182, -0.21627145, 0.4329547)
+bones/2/rotation = Quaternion(-0.65092176, 0.1682509, 0.19794522, 0.7133093)
+bones/3/rotation = Quaternion(0.1636085, -0.013230106, -0.019215405, 0.98624945)
+bones/4/rotation = Quaternion(0.05625584, -0.046311464, -0.0007617272, 0.99734145)
+bones/5/rotation = Quaternion(0.35974988, 0.066422224, -0.06892054, 0.9281261)
+bones/6/rotation = Quaternion(-0.57933843, -0.08320948, 0.16617952, 0.79361683)
+bones/7/rotation = Quaternion(-0.16865726, -0.009073663, 0.033710103, 0.98505634)
+bones/8/rotation = Quaternion(0.10696945, -0.01346605, 0.015318206, 0.9940531)
+bones/9/rotation = Quaternion(0.484674, -0.056917083, 0.17141442, 0.8558439)
+bones/10/rotation = Quaternion(-0.6398971, 0.28230214, -0.05601161, 0.7125306)
+bones/11/rotation = Quaternion(0.852385, -0.26920348, 0.28284216, 0.34780693)
+bones/12/rotation = Quaternion(-0.67361313, -0.16043636, -0.08951915, 0.71588546)
+bones/13/position = Vector3(0.0034320503, 0.20785588, -0.13634816)
+bones/13/rotation = Quaternion(-0.419848, 0.3322826, 0.5960904, 0.5983245)
