@@ -111,6 +111,16 @@ func die():
 	$"../MusicLoop".stop()
 	$"../MusicIntro".stop()
 	$"../LoseJingle".play()
+	$Pivot/C_hamster/AnimationPlayer2.play("death")
+	await get_tree().create_timer(1.0).timeout		
+	$"Pivot".hide()
+	$HamsterDeath.rotation.y = $Pivot.rotation.y + PI
+	$"HamsterDeath".show()
+
+
+	
+
+	
 
 
 func _on_music_intro_finished() -> void:
