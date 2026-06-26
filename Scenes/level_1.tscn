@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bh3nm7qxf3kr2" path="res://Scenes/player.tscn" id="1_vk57k"]
 [ext_resource type="MeshLibrary" uid="uid://ceeg5saio0pcw" path="res://assets/meshes/environment modular set/modular_set_sewer.meshlib" id="2_8ffim"]
 [ext_resource type="Shader" uid="uid://d12mau0monnf5" path="res://assets/shaders/ps1_post_process.gdshader" id="3_xfk5q"]
+[ext_resource type="AudioStream" uid="uid://8cxq8u6bi1u" path="res://Music/Sewers-Intro.wav" id="4_6444e"]
+[ext_resource type="AudioStream" uid="uid://b255vk2usbhn2" path="res://Music/Sewers-Loop.wav" id="5_evi0p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7p6j4"]
 shader = ExtResource("3_xfk5q")
@@ -57,3 +59,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MusicIntro" type="AudioStreamPlayer" parent="." unique_id=750173291]
+stream = ExtResource("4_6444e")
+autoplay = true
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="." unique_id=1145029524]
+stream = ExtResource("5_evi0p")
+
+[connection signal="finished" from="MusicIntro" to="Player" method="_on_music_intro_finished"]

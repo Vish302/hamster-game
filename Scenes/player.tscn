@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bgp431xou7oky" path="res://Music/PlayerSqueak.wav" id="3_6t5aa"]
 [ext_resource type="AudioStream" uid="uid://ciykf0ojqkdsc" path="res://Music/TippyTap.wav" id="4_fkybt"]
 [ext_resource type="Script" uid="uid://cglwoqy8f3dnv" path="res://Scenes/spring_arm_3d.gd" id="4_vgqql"]
+[ext_resource type="AudioStream" uid="uid://bjkukvkr81msp" path="res://Music/Jump.wav" id="6_x3wgy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7dipq"]
 radius = 0.425
@@ -20,7 +21,7 @@ script = ExtResource("1_v0iea")
 [node name="C_hamster" parent="Pivot" unique_id=1611388634 instance=ExtResource("2_cvnsp")]
 transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Pivot/C_hamster/Hamster_Amature" parent_id_path=PackedInt32Array(1611388634, 433810354) index="0" unique_id=1870570867]
+[node name="Skeleton3D" parent="Pivot/C_hamster/Hamster_Amature" parent_id_path=PackedInt32Array(1611388634, 489433827) index="0" unique_id=1478537816]
 bones/0/position = Vector3(-0.006526648, 0.06598691, -0.13204974)
 bones/0/rotation = Quaternion(0.64460087, -0.051699936, -0.04697431, 0.76132137)
 bones/1/rotation = Quaternion(0.62364566, 0.3793494, -0.07861269, 0.6789553)
@@ -44,11 +45,11 @@ shape = SubResource("SphereShape3D_7dipq")
 
 [node name="Squeak" type="AudioStreamPlayer" parent="." unique_id=882535924]
 stream = ExtResource("3_6t5aa")
-pitch_scale = 0.8
+pitch_scale = 0.9
 
 [node name="tippytaps" type="AudioStreamPlayer" parent="." unique_id=1794481797]
 stream = ExtResource("4_fkybt")
-volume_db = 15.0
+volume_db = 20.0
 pitch_scale = 2.0
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1462949978]
@@ -69,6 +70,10 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=547947213]
 transform = Transform3D(0.9998976, 0, -0.014309988, 0, 1, 0, 0.014309988, 0, 0.9998976, -0.019165039, 0.45919037, 0)
 shape = SubResource("SphereShape3D_fkybt")
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=1172352667]
+stream = ExtResource("6_x3wgy")
+volume_db = 15.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 
