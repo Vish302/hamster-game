@@ -94,6 +94,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor() and Input.is_action_pressed("jump") and alive:
 		target_velocity.y = jump_impulse
+		$JumpSound.play()
 	
 	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
 	
@@ -116,3 +117,9 @@ func die():
 	target_velocity.y = jump_impulse
 	alive = false
 	moving = false
+	
+
+
+
+func _on_music_intro_finished() -> void:
+	$"../MusicLoop".play()
