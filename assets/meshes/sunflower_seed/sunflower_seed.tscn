@@ -5,3 +5,6 @@
 
 [node name="sunflower_seed" unique_id=496895769 instance=ExtResource("1_lco4r")]
 script = ExtResource("2_r1tdi")
+
+[node name="SM_sunflower_seed" parent="." index="0" unique_id=671969641]
+layers = 5

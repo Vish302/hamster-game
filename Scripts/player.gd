@@ -1,5 +1,7 @@
 extends CharacterBody3D
 signal hit
+signal sunflower_win
+
 
 # defining how fast the player falls in mph
 @export var fall_acceleration = 75
@@ -119,3 +121,10 @@ func _on_music_intro_finished() -> void:
 
 func _on_water_detector_body_entered(body: Node3D) -> void:
 	die()
+
+
+func win():
+	sunflower_win.emit()
+	
+func _on_sunflower_detector_body_entered(body: Node3D) -> void:
+	win()

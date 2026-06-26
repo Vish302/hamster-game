@@ -17,3 +17,11 @@ func _on_player_hit() -> void:
 	pass
 	await get_tree().create_timer(2.3).timeout
 	$GameOver/Screen.show()		
+
+
+func _on_player_sunflower_win() -> void:
+	$WinJingle.play()
+	Global.alive = false
+	await get_tree().create_timer(3.0).timeout
+	get_tree().change_scene_to_file("res://scenes/win.tscn")
+	
