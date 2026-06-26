@@ -611,7 +611,7 @@ script = ExtResource("1_v0iea")
 [node name="C_hamster" parent="Pivot" unique_id=1611388634 instance=ExtResource("2_cvnsp")]
 transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Pivot/C_hamster/Hamster_Amature" parent_id_path=PackedInt32Array(1611388634, 433810354) index="0" unique_id=1870570867]
+[node name="Skeleton3D" parent="Pivot/C_hamster/Hamster_Amature" parent_id_path=PackedInt32Array(1611388634, 1837696402) index="0" unique_id=316048427]
 bones/0/position = Vector3(-0.0018246775, 0.066161014, -0.13198784)
 bones/0/rotation = Quaternion(0.535522, 0.06230256, 0.0026513787, 0.8422159)
 bones/1/rotation = Quaternion(0.8329122, 0.26839182, -0.21627145, 0.4329547)
@@ -646,10 +646,10 @@ volume_db = 20.0
 pitch_scale = 2.0
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1462949978]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=735825244]
-spring_length = 3.0
+spring_length = 1.75
 script = ExtResource("4_vgqql")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=942986304]
@@ -666,7 +666,7 @@ shape = SubResource("SphereShape3D_fkybt")
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=1172352667]
 stream = ExtResource("6_x3wgy")
-volume_db = 15.0
+volume_db = 5.0
 
 [node name="HamsterDeath" parent="." unique_id=1496426076 instance=ExtResource("7_3smsa")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.0010986328, 6.1035156e-05, -0.0025024414)
