@@ -603,6 +603,8 @@ radius = 0.425
 [sub_resource type="SphereShape3D" id="SphereShape3D_fkybt"]
 radius = 0.5039939
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_2u30e"]
+
 [node name="Player" type="CharacterBody3D" unique_id=2083121562]
 script = ExtResource("1_v0iea")
 
@@ -611,7 +613,7 @@ script = ExtResource("1_v0iea")
 [node name="C_hamster" parent="Pivot" unique_id=1611388634 instance=ExtResource("2_cvnsp")]
 transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Pivot/C_hamster/Hamster_Amature" parent_id_path=PackedInt32Array(1611388634, 1837696402) index="0" unique_id=316048427]
+[node name="Skeleton3D" parent="Pivot/C_hamster/Hamster_Amature" parent_id_path=PackedInt32Array(1611388634, 1163569374) index="0" unique_id=1153223338]
 bones/0/position = Vector3(-0.0018246775, 0.066161014, -0.13198784)
 bones/0/rotation = Quaternion(0.535522, 0.06230256, 0.0026513787, 0.8422159)
 bones/1/rotation = Quaternion(0.8329122, 0.26839182, -0.21627145, 0.4329547)
@@ -672,6 +674,15 @@ volume_db = 5.0
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.0010986328, 6.1035156e-05, -0.0025024414)
 visible = false
 
+[node name="SunflowerDetector" type="Area3D" parent="." unique_id=129849325]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SunflowerDetector" unique_id=65784833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47070313, 0)
+shape = SubResource("SphereShape3D_2u30e")
+
 [connection signal="body_entered" from="WaterDetector" to="." method="_on_water_detector_body_entered"]
+[connection signal="body_entered" from="SunflowerDetector" to="." method="_on_sunflower_detector_body_entered"]
 
 [editable path="Pivot/C_hamster"]

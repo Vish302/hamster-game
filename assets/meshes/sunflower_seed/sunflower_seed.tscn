@@ -1,5 +1,10 @@
 [gd_scene format=3 uid="uid://c1hmq1v4as22i"]
 
 [ext_resource type="PackedScene" uid="uid://byovcgtqbmgrh" path="res://assets/meshes/sunflower_seed/sunflower_seed.glb" id="1_lco4r"]
+[ext_resource type="Script" uid="uid://cmmf54u1nus8p" path="res://assets/meshes/sunflower_seed/sunflower_seed.gd" id="2_r1tdi"]
 
 [node name="sunflower_seed" unique_id=496895769 instance=ExtResource("1_lco4r")]
+script = ExtResource("2_r1tdi")
+
+[node name="SM_sunflower_seed" parent="." index="0" unique_id=671969641]
+layers = 5

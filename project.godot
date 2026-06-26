@@ -14,6 +14,10 @@ config/name="Hamster Wheel"
 run/main_scene="uid://bcxyessmubak"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
+[autoload]
+
+Global="*uid://c8ngcp4wg7hjf"
+
 [display]
 
 window/stretch/mode="viewport"
