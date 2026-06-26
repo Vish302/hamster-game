@@ -1,5 +1,7 @@
 extends CharacterBody3D
 signal hit
+signal sunflower_win
+
 
 # defining how fast the player falls in mph
 @export var fall_acceleration = 75
@@ -14,7 +16,6 @@ signal hit
 var target_velocity = Vector3.ZERO
 var moving = false
 var wait_for_sound = 0
-var alive = true
 
 @export_range(0.0, 1.0) var mouse_sensitivity = 0.01
 @export var tilt_limit = deg_to_rad(75)
@@ -23,7 +24,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("squeak"):
 		$Squeak.play()
 	var roll = randi_range(1, 500)
-	if roll == 1 and velocity.length() == 0.0 and alive:
+	if roll == 1 and velocity.length() == 0.0 and Global.alive:
 		$Pivot/C_hamster/AnimationPlayer.play("idle_looped")
 
 # defining the actual movement based on input
@@ -32,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	var direction = Vector3.ZERO
 	
 	# check for each input and change direction accordingly
-	if alive:
+	if Global.alive:
 		if Input.is_action_pressed("move_left"):
 			direction.x -= 1
 		if Input.is_action_pressed("move_right"):
@@ -92,7 +93,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		target_velocity.y = 0
 	
-	if is_on_floor() and Input.is_action_pressed("jump") and alive:
+	if is_on_floor() and Input.is_action_pressed("jump") and (Global.alive or Global.win):
 		target_velocity.y = jump_impulse
 		$JumpSound.play()
 	
@@ -105,7 +106,7 @@ func die():
 	hit.emit()
 	target_velocity = Vector3.ZERO	
 	moving = false
-	alive = false
+	Global.alive = false
 	$"../MusicLoop".stop()
 	$"../MusicIntro".stop()
 	$"../LoseJingle".play()
@@ -120,3 +121,10 @@ func _on_music_intro_finished() -> void:
 
 func _on_water_detector_body_entered(body: Node3D) -> void:
 	die()
+
+
+func win():
+	sunflower_win.emit()
+	
+func _on_sunflower_detector_body_entered(body: Node3D) -> void:
+	win()

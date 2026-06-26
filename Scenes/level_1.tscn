@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bilqpnq437gpt" path="res://Music/LoseJingle.wav" id="6_evi0p"]
 [ext_resource type="PackedScene" uid="uid://b6dy18omsoc76" path="res://Scenes/game_over.tscn" id="9_wrinw"]
 [ext_resource type="Texture2D" uid="uid://d0fo8j1vu5wmt" path="res://assets/meshes/environment sewer objects/environment_sewer_objects_T_rusty_metal_2_BC.png" id="10_chwpn"]
+[ext_resource type="AudioStream" uid="uid://dh2sjxb8aien6" path="res://Music/WinJingle.wav" id="10_chwpn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvres"]
 resource_name = "signs_and_seed"
@@ -441,6 +442,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.0
 light_color = Color(1, 0.9137255, 0.77254903, 1)
 light_energy = 4.109
 omni_range = 6.5802107
+[node name="WinJingle" type="AudioStreamPlayer" parent="." unique_id=826980258]
+stream = ExtResource("10_chwpn")
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="sunflower_win" from="Player" to="." method="_on_player_sunflower_win"]
 [connection signal="finished" from="MusicIntro" to="Player" method="_on_music_intro_finished"]
