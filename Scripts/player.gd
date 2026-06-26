@@ -1,4 +1,5 @@
 extends CharacterBody3D
+signal hit
 
 # defining how fast the player falls in mph
 @export var fall_acceleration = 75
@@ -13,6 +14,7 @@ extends CharacterBody3D
 var target_velocity = Vector3.ZERO
 var moving = false
 var wait_for_sound = 0
+var alive = true
 
 @export_range(0.0, 1.0) var mouse_sensitivity = 0.01
 @export var tilt_limit = deg_to_rad(75)
@@ -30,14 +32,15 @@ func _physics_process(delta: float) -> void:
 	var direction = Vector3.ZERO
 	
 	# check for each input and change direction accordingly
-	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("move_right"):
-		direction.x += 1
-	if Input.is_action_pressed("move_forward"):
-		direction.z -= 1
-	if Input.is_action_pressed("move_back"):
-		direction.z += 1
+	if alive:
+		if Input.is_action_pressed("move_left"):
+			direction.x -= 1
+		if Input.is_action_pressed("move_right"):
+			direction.x += 1
+		if Input.is_action_pressed("move_forward"):
+			direction.z -= 1
+		if Input.is_action_pressed("move_back"):
+			direction.z += 1
 	
 	# if the player inputted something we will change the rotation to it
 	if direction != Vector3.ZERO:
@@ -54,6 +57,7 @@ func _physics_process(delta: float) -> void:
 	if velocity.length() > 0.5:
 		if velocity.length() > 1 and is_on_floor():
 			if(wait_for_sound == 10):
+				$tippytaps.pitch_scale = randi_range(100, 150)*0.01
 				$tippytaps.play()
 				wait_for_sound = 0
 			else:
@@ -88,10 +92,30 @@ func _physics_process(delta: float) -> void:
 	else:
 		target_velocity.y = 0
 	
-	if is_on_floor() and Input.is_action_pressed("jump"):
+	if is_on_floor() and Input.is_action_pressed("jump") and alive:
 		target_velocity.y = jump_impulse
+		$JumpSound.play()
 	
 	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
 	
 	velocity = target_velocity
 	move_and_slide()
+
+	
+	
+func die():
+	hit.emit()
+	target_velocity = Vector3.ZERO	
+	moving = false
+	alive = false
+	$"../MusicLoop".stop()
+	$"../MusicIntro".stop()
+	$"../LoseJingle".play()
+
+
+func _on_music_intro_finished() -> void:
+	$"../MusicLoop".play()
+
+
+func _on_water_detector_body_entered(body: Node3D) -> void:
+	die()
