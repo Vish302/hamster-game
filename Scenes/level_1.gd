@@ -21,7 +21,8 @@ func _on_player_hit() -> void:
 
 func _on_player_sunflower_win() -> void:
 	$WinJingle.play()
+	$sunflower_seed.hide()
 	Global.alive = false
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	get_tree().change_scene_to_file("res://scenes/win.tscn")
 	

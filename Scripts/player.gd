@@ -122,9 +122,8 @@ func _on_music_intro_finished() -> void:
 func _on_water_detector_body_entered(body: Node3D) -> void:
 	die()
 
-
-func win():
-	sunflower_win.emit()
-	
 func _on_sunflower_detector_body_entered(body: Node3D) -> void:
-	win()
+	sunflower_win.emit()
+	target_velocity = Vector3.ZERO	
+	moving = false
+	Global.alive = false
