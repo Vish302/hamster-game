@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dvqmve723yak1" path="res://assets/meshes/environment sewer objects/environment_sewer_objects_sign_text_Base_color.png" id="5_6444e"]
 [ext_resource type="AudioStream" uid="uid://b255vk2usbhn2" path="res://Music/Sewers-Loop.wav" id="5_evi0p"]
 [ext_resource type="AudioStream" uid="uid://bilqpnq437gpt" path="res://Music/LoseJingle.wav" id="6_evi0p"]
+[ext_resource type="PackedScene" uid="uid://b6dy18omsoc76" path="res://Scenes/game_over.tscn" id="9_wrinw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7p6j4"]
 shader = ExtResource("3_xfk5q")
@@ -54,6 +55,9 @@ shadow_mesh = SubResource("ArrayMesh_wagcr")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lsmp6"]
 data = PackedVector3Array(0.4, -0.3, -1.3038516e-07, 0.4, 0.3, 0.03999987, 0.4, 0.3, -1.3038516e-07, 0.4, -0.3, -1.3038516e-07, 0.4, -0.3, 0.03999987, 0.4, 0.3, 0.03999987, 0.4, -0.3, 0.03999987, -0.4, 0.3, 0.04000013, 0.4, 0.3, 0.03999987, 0.4, -0.3, 0.03999987, -0.4, -0.3, 0.04000013, -0.4, 0.3, 0.04000013, -0.4, -0.3, 0.04000013, -0.4, 0.3, 1.3038516e-07, -0.4, 0.3, 0.04000013, -0.4, -0.3, 0.04000013, -0.4, -0.3, 1.3038516e-07, -0.4, 0.3, 1.3038516e-07, -0.4, -0.3, 1.3038516e-07, 0.4, 0.3, -1.3038516e-07, -0.4, 0.3, 1.3038516e-07, -0.4, -0.3, 1.3038516e-07, 0.4, -0.3, -1.3038516e-07, 0.4, 0.3, -1.3038516e-07, 0.4, -0.3, 0.03999987, -0.4, -0.3, 1.3038516e-07, -0.4, -0.3, 0.04000013, 0.4, -0.3, 0.03999987, 0.4, -0.3, -1.3038516e-07, -0.4, -0.3, 1.3038516e-07, -0.4, 0.3, 0.04000013, 0.4, 0.3, -1.3038516e-07, 0.4, 0.3, 0.03999987, -0.4, 0.3, 0.04000013, -0.4, 0.3, 1.3038516e-07, 0.4, 0.3, -1.3038516e-07)
+
+[sub_resource type="LabelSettings" id="LabelSettings_af3po"]
+font_size = 30
 
 [node name="Level1" type="Node3D" unique_id=1669429564]
 script = ExtResource("1_chwpn")
@@ -145,8 +149,15 @@ volume_db = -20.0
 stream = ExtResource("6_evi0p")
 volume_db = -20.0
 
+[node name="GameOver" parent="." unique_id=2110391926 instance=ExtResource("9_wrinw")]
+
+[node name="Label" parent="GameOver/Screen" parent_id_path=PackedInt32Array(2110391926, 1165061988) index="0" unique_id=1759687048]
+text = "You died! Press R to restart"
+label_settings = SubResource("LabelSettings_af3po")
+
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="finished" from="MusicIntro" to="Player" method="_on_music_intro_finished"]
 
 [editable path="Player"]
 [editable path="Player/Pivot/C_hamster"]
+[editable path="GameOver"]
