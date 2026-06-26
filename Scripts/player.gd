@@ -2,12 +2,12 @@ extends CharacterBody3D
 
 # defining how fast the player falls in mph
 @export var fall_acceleration = 75
-@export var move_acceleration = 10
+@export var move_acceleration = 12
 @export var stop_acceleration = 6
 
 # jump impulse applied to the character
 @export var jump_impulse = 20
-@export var move_impulse = 20
+@export var move_impulse = 12
 @export var bounce_impulse = 16
 
 var target_velocity = Vector3.ZERO
