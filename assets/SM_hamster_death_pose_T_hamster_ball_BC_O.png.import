@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmkjmvohbeuqn"
-path.s3tc="res://.godot/imported/C_hamster_T_hamster_body_BC.png-5115b3cf96c8f23bd01870644e58ea0e.s3tc.ctex"
+uid="uid://dinyxy448a0m"
+path.s3tc="res://.godot/imported/SM_hamster_death_pose_T_hamster_ball_BC_O.png-52d7df5c118e5089a73805e713d2a11c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "2959aeb7a6d5015a04392adce2b2b721"
+"md5": "3026a2ee73fe216185160b4d2925327a"
 }
 
 [deps]
 
-source_file="res://assets/C_hamster_T_hamster_body_BC.png"
-dest_files=["res://.godot/imported/C_hamster_T_hamster_body_BC.png-5115b3cf96c8f23bd01870644e58ea0e.s3tc.ctex"]
+source_file="res://assets/SM_hamster_death_pose_T_hamster_ball_BC_O.png"
+dest_files=["res://.godot/imported/SM_hamster_death_pose_T_hamster_ball_BC_O.png-52d7df5c118e5089a73805e713d2a11c.s3tc.ctex"]
 
 [params]
 
