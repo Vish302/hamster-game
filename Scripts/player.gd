@@ -23,7 +23,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("squeak"):
 		$Squeak.play()
 	var roll = randi_range(1, 500)
-	if roll == 1 and velocity.length() == 0.0:
+	if roll == 1 and velocity.length() == 0.0 and alive:
 		$Pivot/C_hamster/AnimationPlayer.play("idle_looped")
 
 # defining the actual movement based on input
