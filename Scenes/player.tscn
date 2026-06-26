@@ -21,7 +21,7 @@ script = ExtResource("1_v0iea")
 [node name="C_hamster" parent="Pivot" unique_id=1611388634 instance=ExtResource("2_cvnsp")]
 transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Pivot/C_hamster/Hamster_Amature" parent_id_path=PackedInt32Array(1611388634, 489433827) index="0" unique_id=1478537816]
+[node name="Skeleton3D" parent="Pivot/C_hamster/Hamster_Amature" parent_id_path=PackedInt32Array(1611388634, 433810354) index="0" unique_id=1870570867]
 bones/0/position = Vector3(-0.006526648, 0.06598691, -0.13204974)
 bones/0/rotation = Quaternion(0.64460087, -0.051699936, -0.04697431, 0.76132137)
 bones/1/rotation = Quaternion(0.62364566, 0.3793494, -0.07861269, 0.6789553)
@@ -75,6 +75,6 @@ shape = SubResource("SphereShape3D_fkybt")
 stream = ExtResource("6_x3wgy")
 volume_db = 15.0
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="WaterDetector" to="." method="_on_water_detector_body_entered"]
 
 [editable path="Pivot/C_hamster"]

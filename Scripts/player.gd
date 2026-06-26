@@ -8,7 +8,7 @@ signal hit
 
 # jump impulse applied to the character
 @export var jump_impulse = 20
-@export var move_impulse = 20
+@export var move_impulse = 12
 @export var bounce_impulse = 16
 
 var target_velocity = Vector3.ZERO
@@ -101,9 +101,6 @@ func _physics_process(delta: float) -> void:
 	velocity = target_velocity
 	move_and_slide()
 
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	die()
 	
 	
 func die():
@@ -111,15 +108,14 @@ func die():
 	target_velocity = Vector3.ZERO	
 	moving = false
 	alive = false
-	await get_tree().create_timer(1.0).timeout
-	moving = true
-	alive = true
-	target_velocity.y = jump_impulse
-	alive = false
-	moving = false
-	
-
+	$"../MusicLoop".stop()
+	$"../MusicIntro".stop()
+	$"../LoseJingle".play()
 
 
 func _on_music_intro_finished() -> void:
 	$"../MusicLoop".play()
+
+
+func _on_water_detector_body_entered(body: Node3D) -> void:
+	die()
