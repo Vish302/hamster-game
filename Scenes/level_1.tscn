@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dh2sjxb8aien6" path="res://Music/WinJingle.wav" id="10_chwpn"]
 [ext_resource type="PackedScene" uid="uid://byovcgtqbmgrh" path="res://assets/meshes/sunflower_seed/sunflower_seed.glb" id="11_af3po"]
 [ext_resource type="Script" uid="uid://cmmf54u1nus8p" path="res://assets/meshes/sunflower_seed/sunflower_seed.gd" id="12_uy8f0"]
+[ext_resource type="Shader" uid="uid://d12mau0monnf5" path="res://assets/shaders/ps1_post_process.gdshader" id="13_6r07y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ko43n"]
 resource_name = "rusty metal 2"
@@ -129,6 +130,9 @@ shadow_mesh = SubResource("ArrayMesh_h4q6l")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_af3po"]
 data = PackedVector3Array(0.4, -0.3, -1.3038516e-07, 0.4, 0.3, 0.03999987, 0.4, 0.3, -1.3038516e-07, 0.4, -0.3, -1.3038516e-07, 0.4, -0.3, 0.03999987, 0.4, 0.3, 0.03999987, 0.4, -0.3, 0.03999987, -0.4, 0.3, 0.04000013, 0.4, 0.3, 0.03999987, 0.4, -0.3, 0.03999987, -0.4, -0.3, 0.04000013, -0.4, 0.3, 0.04000013, -0.4, -0.3, 0.04000013, -0.4, 0.3, 1.3038516e-07, -0.4, 0.3, 0.04000013, -0.4, -0.3, 0.04000013, -0.4, -0.3, 1.3038516e-07, -0.4, 0.3, 1.3038516e-07, -0.4, -0.3, 1.3038516e-07, 0.4, 0.3, -1.3038516e-07, -0.4, 0.3, 1.3038516e-07, -0.4, -0.3, 1.3038516e-07, 0.4, -0.3, -1.3038516e-07, 0.4, 0.3, -1.3038516e-07, 0.4, -0.3, 0.03999987, -0.4, -0.3, 1.3038516e-07, -0.4, -0.3, 0.04000013, 0.4, -0.3, 0.03999987, 0.4, -0.3, -1.3038516e-07, -0.4, -0.3, 1.3038516e-07, -0.4, 0.3, 0.04000013, 0.4, 0.3, -1.3038516e-07, 0.4, 0.3, 0.03999987, -0.4, 0.3, 0.04000013, -0.4, 0.3, 1.3038516e-07, 0.4, 0.3, -1.3038516e-07)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ioyp"]
+shader = ExtResource("13_6r07y")
 
 [node name="Level1" type="Node3D" unique_id=1669429564]
 script = ExtResource("1_chwpn")
@@ -471,18 +475,31 @@ mesh = SubResource("ArrayMesh_chwpn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Signs/SM_sign_02/StaticBody3D" unique_id=215947819]
 shape = SubResource("ConcavePolygonShape3D_af3po")
+
 [node name="sunflower_seed" parent="." unique_id=1520241928 instance=ExtResource("11_af3po")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.002408862, 0.85469484, 0.03272462)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 59.89967, -3.1082716, -23.02888)
 script = ExtResource("12_uy8f0")
 
-[node name="SM_sunflower_seed" parent="sunflower_seed" index="0" unique_id=671969641]
+[node name="SM_sunflower_seed" parent="sunflower_seed" index="0" unique_id=1672870522]
 layers = 4
 
-[node name="StaticBody3D" parent="sunflower_seed/SM_sunflower_seed" index="0" unique_id=1866910343]
+[node name="StaticBody3D" parent="sunflower_seed/SM_sunflower_seed" index="0" unique_id=103423418]
 collision_layer = 4
 collision_mask = 4
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1870484502]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=2037190398]
+material = SubResource("ShaderMaterial_6ioyp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="sunflower_win" from="Player" to="." method="_on_player_sunflower_win"]
 [connection signal="finished" from="MusicIntro" to="Player" method="_on_music_intro_finished"]
 
 [editable path="sunflower_seed"]
