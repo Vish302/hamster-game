@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cmmf54u1nus8p" path="res://assets/meshes/sunflower_seed/sunflower_seed.gd" id="3_tmki8"]
 [ext_resource type="MeshLibrary" uid="uid://ceeg5saio0pcw" path="res://assets/meshes/environment modular set/modular_set_sewer.meshlib" id="5_u4bre"]
 [ext_resource type="AudioStream" uid="uid://dctmg1qmvd7c" path="res://Music/Sewers.wav" id="6_4x0fk"]
+[ext_resource type="Shader" uid="uid://d12mau0monnf5" path="res://assets/shaders/ps1_post_process.gdshader" id="7_liiam"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2u30e"]
 font_size = 40
@@ -19,16 +20,13 @@ sky_material = SubResource("ProceduralSkyMaterial_yblwc")
 background_mode = 2
 sky = SubResource("Sky_4x0fk")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5amea"]
+shader = ExtResource("7_liiam")
+
 [node name="Win" type="Node3D" unique_id=1804073906]
 script = ExtResource("1_yblwc")
 
-[node name="Main" parent="." unique_id=881907086 instance=ExtResource("1_wao2c")]
-
-[node name="Camera3D" parent="Main" index="2" unique_id=1189440270]
-transform = Transform3D(-0.99357194, 0.012814926, -0.11247481, 0, 0.9935718, 0.11320357, 0.11320249, 0.11247589, -0.98718506, -0.17918217, 0.6353775, -1.778945)
-
-[node name="Label" type="Label" parent="Main/CanvasLayer/ColorRect" parent_id_path=PackedInt32Array(881907086, 588930805) index="0" unique_id=2132288598]
-layout_mode = 1
+[node name="Main_CanvasLayer_ColorRect#Label" type="Label" parent="." unique_id=2132288598]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -42,6 +40,11 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "You win!!!"
 label_settings = SubResource("LabelSettings_2u30e")
+
+[node name="Main" parent="." unique_id=881907086 instance=ExtResource("1_wao2c")]
+
+[node name="Camera3D" parent="Main" index="2" unique_id=1189440270]
+transform = Transform3D(-0.99357194, 0.012814926, -0.11247481, 0, 0.9935718, 0.11320357, 0.11320249, 0.11247589, -0.98718506, -0.17918217, 0.6353775, -1.778945)
 
 [node name="sunflower_seed" parent="." unique_id=1593694774 instance=ExtResource("2_hgi8f")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 1.2829235, 0.14780962, 0)
@@ -137,6 +140,17 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=284551332]
 stream = ExtResource("6_4x0fk")
 autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1627688557]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1458680184]
+material = SubResource("ShaderMaterial_5amea")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [editable path="Main"]
 [editable path="sunflower_seed"]

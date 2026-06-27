@@ -8,7 +8,7 @@ func _ready() -> void:
 	Global.alive = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
 
@@ -20,6 +20,7 @@ func _on_player_hit() -> void:
 
 
 func _on_player_sunflower_win() -> void:
+	print("Sunflower")
 	$WinJingle.play()
 	$sunflower_seed.hide()
 	Global.alive = false

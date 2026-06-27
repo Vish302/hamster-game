@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bgrwx4vejt2ed" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://bh3nm7qxf3kr2" path="res://Scenes/player.tscn" id="1_jjgbg"]
-[ext_resource type="Shader" uid="uid://d12mau0monnf5" path="res://assets/shaders/ps1_post_process.gdshader" id="2_bo1nx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dipq"]
 size = Vector3(60, 1, 60)
@@ -13,9 +12,6 @@ albedo_color = Color(0.381535, 0.6188447, 0.09367057, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_7dipq"]
 material = SubResource("StandardMaterial3D_yblwc")
 size = Vector3(60, 1, 60)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qyt7c"]
-shader = ExtResource("2_bo1nx")
 
 [node name="Main" type="Node3D" unique_id=881907086]
 script = ExtResource("1_bo1nx")
@@ -41,14 +37,3 @@ sky_mode = 1
 transform = Transform3D(0.9953962, 0.026418671, -0.09213285, 0, 0.9612617, 0.27563733, 0.09584575, -0.27436838, 0.9568362, -0.3685314, 2.0811832, 4.827345)
 
 [node name="Player" parent="." unique_id=2083121562 instance=ExtResource("1_jjgbg")]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=736478075]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=588930805]
-material = SubResource("ShaderMaterial_qyt7c")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true

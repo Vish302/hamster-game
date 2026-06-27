@@ -10,9 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Hamster Wheel"
+config/name="Spinny Gonzalez"
 run/main_scene="uid://cs1wlnes5xjij"
 config/features=PackedStringArray("4.7", "Forward Plus")
+config/icon="uid://2oa10j8oat1l"
 
 [autoload]
 
@@ -20,6 +21,8 @@ Global="*uid://c8ngcp4wg7hjf"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 "<<<<<<<Updatedupstream[input]move_left"={
